@@ -1,8 +1,17 @@
 require 'dragonfly'
 
+# Adding image_optim to Dragonfly
+image_optim = ImageOptim.new
+
 # Configure
 Dragonfly.app.configure do
   plugin :imagemagick
+  
+  # Image optimization processor.
+  processor :image_optim do |content, *args|
+    optimized = image_optim.optimize_image_data(content.data)
+    content.update(optimized) if optimized
+  end
 
   # TODO: Dragonfly changed their SHA algorithm and broke old images
   # make sure to revert this back to true once we figure out how to support

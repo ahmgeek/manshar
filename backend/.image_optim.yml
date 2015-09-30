@@ -1,0 +1,13 @@
+nice: 20
+pngout: false
+svgo: false
+allow_lossy: true
+verbose: true
+threads: 2
+skip_missing_workers: true
+jpegoptim:
+  strip: :all
+  max_quality: 75
+optipng:
+    level: 4
+

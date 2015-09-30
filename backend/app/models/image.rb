@@ -4,6 +4,7 @@ class Image < ActiveRecord::Base
   belongs_to :user
 
   dragonfly_accessor :asset do
+    after_assign {|img| self.asset = img.image_optim }
     storage_options do |attachment|
       { headers: {"x-amz-acl" => "public-read-write"} }
     end
@@ -11,3 +12,4 @@ class Image < ActiveRecord::Base
   abs_url_for :asset
 
 end
+

@@ -21,6 +21,7 @@ class User < ActiveRecord::Base
 
   dragonfly_accessor :avatar do
     default ENV['DEFAULT_AVATAR']
+    after_assign {|img| self.avatar = img.image_optim }
     storage_options do |attachment|
       { headers: {"x-amz-acl" => "public-read-write"} }
     end

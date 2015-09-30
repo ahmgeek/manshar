@@ -19,6 +19,7 @@ class Article < ActiveRecord::Base
   after_save :update_published_articles_count
 
   dragonfly_accessor :cover do
+    after_assign {|img| self.cover = img.image_optim }
     storage_options do |attachment|
       { headers: {"x-amz-acl" => "public-read-write"} }
     end

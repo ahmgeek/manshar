@@ -7,12 +7,14 @@ class Category < ActiveRecord::Base
   validates_uniqueness_of :title
 
   dragonfly_accessor :icon do
+    after_assign {|img| self.icon = img.image_optim }
     storage_options do |attachment|
       { headers: {"x-amz-acl" => "public-read-write"} }
     end
   end
 
   dragonfly_accessor :image do
+    after_assign {|img| self.image = img.image_optim }
     storage_options do |attachment|
       { headers: {"x-amz-acl" => "public-read-write"} }
     end

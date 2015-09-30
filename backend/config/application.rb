@@ -18,6 +18,10 @@ module Backend
     # Enable compression for responses.
     config.middleware.use Rack::Deflater
 
+    # we may want to change this later on
+    # issue is image_optim crashes on missing dependencies
+    config.assets.image_optim = false
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
