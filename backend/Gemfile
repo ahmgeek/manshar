@@ -79,4 +79,6 @@ group :test, :development do
   gem 'email_spec'
   gem 'rb-readline'
   gem 'pry-rails'
+  gem 'rubocop', require: false
+  gem 'rubocop-rspec', require: false
 end
